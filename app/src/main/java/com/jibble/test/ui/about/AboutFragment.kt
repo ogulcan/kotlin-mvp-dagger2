@@ -6,8 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.jibble.test.R
-import com.jibble.test.di.component.DaggerAboutComponent
-import com.jibble.test.di.module.AboutModule
+import com.jibble.test.di.component.DaggerFragmentComponent
+import com.jibble.test.di.module.FragmentModule
 import kotlinx.android.synthetic.main.fragment_about.*
 import javax.inject.Inject
 
@@ -34,7 +34,6 @@ class AboutFragment: Fragment(), AboutContract.View {
         rootView = inflater!!.inflate(R.layout.fragment_about, container, false)
         initView()
         return rootView
-
     }
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
@@ -60,9 +59,10 @@ class AboutFragment: Fragment(), AboutContract.View {
     }
 
     private fun injectDependency() {
-        val aboutComponent = DaggerAboutComponent.builder()
-                .aboutModule(AboutModule())
+        val aboutComponent = DaggerFragmentComponent.builder()
+                .fragmentModule(FragmentModule())
                 .build()
+
         aboutComponent.inject(this)
     }
 
