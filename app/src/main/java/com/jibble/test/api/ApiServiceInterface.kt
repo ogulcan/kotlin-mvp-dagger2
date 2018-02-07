@@ -17,7 +17,7 @@ import retrofit2.http.Path
 interface ApiServiceInterface {
 
     @GET("albums")
-    fun getAlbumList(): Observable<Album>
+    fun getAlbumList(): Observable<List<Album>>
 
     @GET("albums/{id}")
     fun getAlbum(@Path("id") id: Int): Observable<Album>
@@ -26,7 +26,7 @@ interface ApiServiceInterface {
     fun deleteAlbum(@Path("id") id: Int)
 
     @GET("posts")
-    fun getPostList(): Observable<Post>
+    fun getPostList(): Observable<List<Post>>
 
     @GET("posts/{id}")
     fun getPost(@Path("id") id: Int): Observable<Post>
@@ -35,7 +35,7 @@ interface ApiServiceInterface {
     fun deletePost(@Path("id") id: Int)
 
     @GET("users")
-    fun getUserList(): Observable<User>
+    fun getUserList(): Observable<List<User>>
 
     @GET("posts/{id}")
     fun getUser(@Path("id") id: Int): Observable<User>
