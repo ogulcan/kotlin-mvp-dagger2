@@ -35,6 +35,13 @@ dependencies {
     compile "io.reactivex.rxjava2:rxjava:$rxjava2_version"
     compile "io.reactivex.rxjava2:rxandroid:$rxandroid_version"
 
+    // dependency injection
+    implementation "com.google.dagger:dagger:$dagger2_version"
+    annotationProcessor "com.google.dagger:dagger-compiler:$dagger2_version"
+    compileOnly 'javax.annotation:jsr250-api:1.0'
+    implementation 'javax.inject:javax.inject:1'
+
+
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
