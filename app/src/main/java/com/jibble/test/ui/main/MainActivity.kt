@@ -7,6 +7,7 @@ import com.jibble.test.R
 import com.jibble.test.di.component.DaggerActivityComponent
 import com.jibble.test.di.module.ActivityModule
 import com.jibble.test.ui.about.AboutFragment
+import com.jibble.test.ui.list.ListFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
@@ -23,6 +24,8 @@ class MainActivity: AppCompatActivity(), MainContract.View {
         injectDependency()
 
         presenter.attach(this)
+
+        showListFragment()
     }
 
     override fun onResume() {
@@ -35,7 +38,7 @@ class MainActivity: AppCompatActivity(), MainContract.View {
     }
 
     override fun showListFragment() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        addFragmentToActivity(ListFragment().newInstance(), getString(R.string.fragment_list_tag))
     }
 
     private fun injectDependency() {
