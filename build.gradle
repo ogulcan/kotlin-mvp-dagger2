@@ -21,6 +21,7 @@ ext {
     rxjava2_version = '2.1.8'
     rxandroid_version = '2.0.1'
     dagger2_version = '2.14.1'
+    support_version = '26.1.0'
 }
 
 allprojects {
