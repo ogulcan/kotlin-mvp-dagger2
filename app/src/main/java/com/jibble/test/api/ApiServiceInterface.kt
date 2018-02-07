@@ -3,6 +3,7 @@ package com.jibble.test.api
 import com.jibble.test.models.Album
 import com.jibble.test.models.Post
 import com.jibble.test.models.User
+import com.jibble.test.util.Constants
 import io.reactivex.Observable
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -36,7 +37,7 @@ interface ApiServiceInterface {
         fun create(): ApiServiceInterface {
             val retrofit = retrofit2.Retrofit.Builder()
                     .addConverterFactory(GsonConverterFactory.create())
-                    .baseUrl("")
+                    .baseUrl(Constants.BASE_URL)
                     .build()
 
             return retrofit.create(ApiServiceInterface::class.java)
