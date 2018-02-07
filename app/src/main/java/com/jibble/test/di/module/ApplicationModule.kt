@@ -2,6 +2,7 @@ package com.jibble.test.di.module
 
 import android.app.Application
 import com.jibble.test.BaseApp
+import com.jibble.test.di.scope.PerApplication
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -14,6 +15,7 @@ class ApplicationModule(private val baseApp: BaseApp) {
 
     @Provides
     @Singleton
+    @PerApplication
     fun provideApplication(): Application {
         return baseApp
     }
