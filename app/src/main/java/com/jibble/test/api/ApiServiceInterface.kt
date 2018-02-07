@@ -6,6 +6,7 @@ import com.jibble.test.models.User
 import com.jibble.test.util.Constants
 import io.reactivex.Observable
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -36,6 +37,7 @@ interface ApiServiceInterface {
     companion object Factory {
         fun create(): ApiServiceInterface {
             val retrofit = retrofit2.Retrofit.Builder()
+                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .addConverterFactory(GsonConverterFactory.create())
                     .baseUrl(Constants.BASE_URL)
                     .build()
