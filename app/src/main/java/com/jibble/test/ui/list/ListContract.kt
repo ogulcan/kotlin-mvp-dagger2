@@ -1,6 +1,7 @@
 package com.jibble.test.ui.list
 
 import com.jibble.test.base.BaseContract
+import com.jibble.test.models.DetailsViewModel
 import com.jibble.test.models.Post
 import com.jibble.test.models.User
 
@@ -13,6 +14,7 @@ class ListContract {
         fun showProgress(show: Boolean)
         fun showErrorMessage(error: String)
         fun loadDataSuccess(list: List<Post>)
+        fun loadDataAllSuccess(model: DetailsViewModel)
     }
 
     interface Presenter: BaseContract.Presenter<View> {
