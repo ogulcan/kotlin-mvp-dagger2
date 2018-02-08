@@ -1,22 +1,14 @@
 <resources>
-    <string name="app_name">Jibble</string>
+    <string name="app_name">Jibble Test Task</string>
 
     <!-- Fragment tags -->
     <string name="fragment_about_tag">About Fragment</string>
     <string name="fragment_list_tag">List Fragment</string>
 
     <!-- About text -->
+    <string name="info">Info</string>
     <string name="about_text">
-        Hey.\n\n
-        I\'m Ogulcan Orhan, mobile application developer.\n\n
-
-        This is an example application that shows how to use MVP with Dagger2 and Retrofit in Kotlin.
-        It fetches data from typicode api (https://jsonplaceholder.typicode.com)\n\n
-
-        Please check the source code for further information.\n\n
-
-        Thank you.\n\n
-
-        Ogulcan
+        Hello.\n\nI\'m Ogulcan Orhan, mobile application developer.\n\nThis is an example application that shows how to use MVP with Dagger2 and Retrofit in Kotlin.
+        It fetches data from typicode api (https://jsonplaceholder.typicode.com)\n\nPlease check the source code for further information.\n\nThank you.\n\nOgulcan
     </string>
 </resources>
