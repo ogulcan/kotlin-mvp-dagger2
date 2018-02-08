@@ -3,6 +3,8 @@ package com.jibble.test.ui.main
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
+import android.view.Menu
+import android.view.MenuItem
 import com.jibble.test.R
 import com.jibble.test.di.component.DaggerActivityComponent
 import com.jibble.test.di.module.ActivityModule
@@ -38,6 +40,22 @@ class MainActivity: AppCompatActivity(), MainContract.View {
 
     override fun showListFragment() {
         addFragmentToActivity(ListFragment().newInstance(), getString(R.string.fragment_list_tag), AnimType.SLIDE)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when(item!!.itemId) {
+            R.id.nav_item_info -> {
+                showAboutFragment()
+                return true
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 
     private fun injectDependency() {
