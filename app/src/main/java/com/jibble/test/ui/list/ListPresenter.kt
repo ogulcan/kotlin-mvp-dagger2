@@ -18,9 +18,8 @@ import javax.inject.Inject
  */
 class ListPresenter: ListContract.Presenter {
 
-    @Inject lateinit var api: ApiServiceInterface
-
     private val subscriptions = CompositeDisposable()
+    private val api: ApiServiceInterface = ApiServiceInterface.create()
     private lateinit var view: ListContract.View
 
     override fun subscribe() {
