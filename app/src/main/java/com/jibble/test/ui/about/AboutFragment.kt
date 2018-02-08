@@ -48,14 +48,14 @@ class AboutFragment: Fragment(), AboutContract.View {
 
     override fun showProgress(show: Boolean) {
         if (show) {
-            progress_bar.visibility = View.VISIBLE
+            progressBar.visibility = View.VISIBLE
         } else {
-            progress_bar.visibility = View.GONE
+            progressBar.visibility = View.GONE
         }
     }
 
     override fun loadMessageSuccess(message: String) {
-        about_text.text = message
+        aboutText.text = message
     }
 
     private fun injectDependency() {

@@ -2,6 +2,8 @@ package com.jibble.test.ui.list
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.widget.RecyclerView
+import android.support.v7.widget.helper.ItemTouchHelper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,8 +11,8 @@ import com.jibble.test.R
 import com.jibble.test.di.component.DaggerFragmentComponent
 import com.jibble.test.di.module.FragmentModule
 import com.jibble.test.models.Post
-import com.jibble.test.models.User
-import kotlinx.android.synthetic.main.fragment_about.*
+import com.jibble.test.util.SwipeToDelete
+import kotlinx.android.synthetic.main.fragment_list.*
 import javax.inject.Inject
 
 /**
@@ -44,9 +46,9 @@ class ListFragment: Fragment(), ListContract.View {
 
     override fun showProgress(show: Boolean) {
         if (show) {
-            progress_bar.visibility = View.VISIBLE
+            progressBar.visibility = View.VISIBLE
         } else {
-            progress_bar.visibility = View.GONE
+            progressBar.visibility = View.GONE
         }
     }
 
@@ -60,6 +62,8 @@ class ListFragment: Fragment(), ListContract.View {
         print("Data is ready, now it's your turn")
     }
 
+
+
     private fun injectDependency() {
         val listComponent = DaggerFragmentComponent.builder()
                 .fragmentModule(FragmentModule())
@@ -70,5 +74,15 @@ class ListFragment: Fragment(), ListContract.View {
 
     private fun initView() {
         presenter.loadData()
+
+        val swipeHandler = object : SwipeToDelete(activity) {
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val adapter = recyclerView.adapter as ListAdapter
+                adapter.removeAt(viewHolder.adapterPosition)
+            }
+        }
+
+        val itemTouchHelper = ItemTouchHelper(swipeHandler)
+        itemTouchHelper.attachToRecyclerView(recyclerView)
     }
 }

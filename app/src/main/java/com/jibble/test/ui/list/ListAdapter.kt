@@ -45,6 +45,11 @@ class ListAdapter(private val context: Context, private val list: MutableList<Po
         return ListAdapter.ListViewHolder(itemView)
     }
 
+    fun removeAt(position: Int) {
+        list.removeAt(position)
+        notifyItemRemoved(position)
+    }
+
     class ListViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
         var layout = itemView.findViewById<ConstraintLayout>(R.id.item_layout)
         val title = itemView.findViewById<TextView>(R.id.item_title)
