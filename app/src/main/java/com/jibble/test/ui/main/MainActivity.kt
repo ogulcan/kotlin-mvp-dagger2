@@ -52,7 +52,7 @@ class MainActivity: AppCompatActivity(), MainContract.View {
         supportFragmentManager.beginTransaction()
                 .disallowAddToBackStack()
                 .setCustomAnimations(animType.getAnimPair().first, animType.getAnimPair().second)
-                .add(R.id.frame, fragment, tag)
+                .replace(R.id.frame, fragment, tag)
                 .commit()
     }
 
