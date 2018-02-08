@@ -34,11 +34,11 @@ class MainActivity: AppCompatActivity(), MainContract.View {
     }
 
     override fun showAboutFragment() {
-        addFragmentToActivity(AboutFragment().newInstance(), getString(R.string.fragment_about_tag))
+        addFragmentToActivity(AboutFragment().newInstance(), getString(R.string.fragment_about_tag), AnimType.FADE)
     }
 
     override fun showListFragment() {
-        addFragmentToActivity(ListFragment().newInstance(), getString(R.string.fragment_list_tag))
+        addFragmentToActivity(ListFragment().newInstance(), getString(R.string.fragment_list_tag), AnimType.SLIDE)
     }
 
     private fun injectDependency() {
@@ -49,15 +49,29 @@ class MainActivity: AppCompatActivity(), MainContract.View {
         activityComponent.inject(this)
     }
 
-    private fun addFragmentToActivity(fragment: Fragment, tag: String) {
+    private fun addFragmentToActivity(fragment: Fragment, tag: String, animType: AnimType) {
         supportFragmentManager.beginTransaction()
                 .disallowAddToBackStack()
-                //.setCustomAnimations(R.anim.slide_left, R.anim.slide_right)
+                .setCustomAnimations(animType.getAnimPair().first, animType.getAnimPair().second)
                 .add(R.id.frame, fragment, tag)
                 .commit()
     }
 
     private fun test() {
         //hello.setText("Hello world with kotlin extensions")
+    }
+
+    enum class AnimType() {
+        SLIDE,
+        FADE;
+
+        fun getAnimPair(): Pair<Int, Int> {
+            when(this) {
+                SLIDE -> return Pair(R.anim.slide_left, R.anim.slide_right)
+                FADE -> return Pair(R.anim.fade_in, R.anim.fade_out)
+            }
+
+            return Pair(R.anim.slide_left, R.anim.slide_right)
+        }
     }
 }
