@@ -1,5 +1,6 @@
 package com.jibble.test.ui.about
 
+import android.util.Log
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.Observable
@@ -15,11 +16,11 @@ class AboutPresenter: AboutContract.Presenter {
     private lateinit var view: AboutContract.View
 
     override fun subscribe() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
     }
 
     override fun unsubscribe() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
     }
 
     override fun attach(view: AboutContract.View) {
@@ -31,9 +32,9 @@ class AboutPresenter: AboutContract.Presenter {
         Observable.just(true).delay(1000, TimeUnit.MILLISECONDS)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .map({ o ->
-                    view.loadMessageSuccess("---")
+                .subscribe({
+                    view.showProgress(false)
+                    view.loadMessageSuccess("Success")
                 })
-                .subscribe()
     }
 }

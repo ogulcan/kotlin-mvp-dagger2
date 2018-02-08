@@ -2,6 +2,7 @@ package com.jibble.test.ui.about
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,18 +28,18 @@ class AboutFragment: Fragment(), AboutContract.View {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         injectDependency()
-        presenter.attach(this)
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         rootView = inflater!!.inflate(R.layout.fragment_about, container, false)
-        initView()
         return rootView
     }
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        presenter.attach(this)
         presenter.subscribe()
+        initView()
     }
 
     override fun onDestroyView() {
@@ -55,7 +56,8 @@ class AboutFragment: Fragment(), AboutContract.View {
     }
 
     override fun loadMessageSuccess(message: String) {
-        aboutText.text = message
+        aboutText.text = getString(R.string.about_text)
+        aboutText.visibility = View.VISIBLE
     }
 
     private fun injectDependency() {
