@@ -17,6 +17,7 @@ class ListContract {
 
     interface Presenter: BaseContract.Presenter<View> {
         fun loadData()
+        fun loadDataAll()
         fun deleteItem(item: Post)
     }
 }
