@@ -32,9 +32,9 @@ class ListPresenter: ListContract.Presenter {
     }
 
     override fun loadData() {
-        var subscribe = api.getUserList().subscribeOn(Schedulers.io())
+        var subscribe = api.getPostList().subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({ list: List<User>? ->
+                .subscribe({ list: List<Post>? ->
                     print("List size: " + list!!.count())
                     view.loadDataSuccess(list!!)
                 })
@@ -42,7 +42,7 @@ class ListPresenter: ListContract.Presenter {
         subscriptions.add(subscribe)
     }
 
-    override fun deleteItem(item: User) {
+    override fun deleteItem(item: Post) {
         //api.deleteUser(item.id)
     }
 }

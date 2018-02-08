@@ -54,7 +54,7 @@ class ListFragment: Fragment(), ListContract.View {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun loadDataSuccess(list: List<User>) {
+    override fun loadDataSuccess(list: List<Post>) {
         // Adapter instance
         // Set recyclerview etc.
         print("Data is ready, now it's your turn")
