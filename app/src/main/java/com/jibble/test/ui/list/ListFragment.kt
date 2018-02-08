@@ -9,6 +9,8 @@ import com.jibble.test.R
 import com.jibble.test.di.component.DaggerFragmentComponent
 import com.jibble.test.di.module.FragmentModule
 import com.jibble.test.models.Post
+import com.jibble.test.models.User
+import kotlinx.android.synthetic.main.fragment_about.*
 import javax.inject.Inject
 
 /**
@@ -41,15 +43,21 @@ class ListFragment: Fragment(), ListContract.View {
     }
 
     override fun showProgress(show: Boolean) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        if (show) {
+            progress_bar.visibility = View.VISIBLE
+        } else {
+            progress_bar.visibility = View.GONE
+        }
     }
 
     override fun showErrorMessage(error: String) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun loadDataSuccess(list: List<Post>) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun loadDataSuccess(list: List<User>) {
+        // Adapter instance
+        // Set recyclerview etc.
+        print("Data is ready, now it's your turn")
     }
 
     private fun injectDependency() {

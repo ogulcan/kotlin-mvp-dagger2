@@ -36,13 +36,13 @@ class ListPresenter: ListContract.Presenter {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ list: List<User>? ->
                     print("List size: " + list!!.count())
+                    view.loadDataSuccess(list!!)
                 })
 
         subscriptions.add(subscribe)
     }
 
-    override fun deleteItem(item: Post) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun deleteItem(item: User) {
+        //api.deleteUser(item.id)
     }
-
 }
