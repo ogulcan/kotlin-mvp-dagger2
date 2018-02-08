@@ -1,25 +1,30 @@
 package com.jibble.test.ui.main
 
+import com.jibble.test.ui.list.ListContract
+import io.reactivex.disposables.CompositeDisposable
+
 /**
  * Created by ogulcan on 07/02/2018.
  */
 class MainPresenter: MainContract.Presenter {
 
-    override fun onDrawerOptionAboutClick() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    private val subscriptions = CompositeDisposable()
+    private lateinit var view: MainContract.View
 
     override fun subscribe() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
     }
 
     override fun unsubscribe() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        subscriptions.clear()
     }
 
     override fun attach(view: MainContract.View) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        this.view = view
+        view.showListFragment() // as default
     }
 
-
+    override fun onDrawerOptionAboutClick() {
+        view.showAboutFragment()
+    }
 }

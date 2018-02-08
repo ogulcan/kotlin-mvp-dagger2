@@ -24,8 +24,7 @@ class MainActivity: AppCompatActivity(), MainContract.View {
         injectDependency()
 
         presenter.attach(this)
-
-        showListFragment()
+        // showListFragment() // as default
     }
 
     override fun onResume() {
