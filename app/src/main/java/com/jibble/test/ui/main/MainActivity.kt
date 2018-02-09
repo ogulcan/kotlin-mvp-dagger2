@@ -26,7 +26,6 @@ class MainActivity: AppCompatActivity(), MainContract.View {
         injectDependency()
 
         presenter.attach(this)
-        // showListFragment() // as default
     }
 
     override fun onResume() {
@@ -35,11 +34,23 @@ class MainActivity: AppCompatActivity(), MainContract.View {
     }
 
     override fun showAboutFragment() {
-        addFragmentToActivity(AboutFragment().newInstance(), getString(R.string.fragment_about_tag), AnimType.FADE)
+        if (supportFragmentManager.findFragmentByTag(AboutFragment.TAG) == null) {
+            supportFragmentManager.beginTransaction()
+                    .addToBackStack(null)
+                    .setCustomAnimations(AnimType.FADE.getAnimPair().first, AnimType.FADE.getAnimPair().second)
+                    .replace(R.id.frame, AboutFragment().newInstance(), AboutFragment.TAG)
+                    .commit()
+        } else {
+            // Maybe an animation like shake hello text
+        }
     }
 
     override fun showListFragment() {
-        addFragmentToActivity(ListFragment().newInstance(), getString(R.string.fragment_list_tag), AnimType.SLIDE)
+        supportFragmentManager.beginTransaction()
+                .disallowAddToBackStack()
+                .setCustomAnimations(AnimType.SLIDE.getAnimPair().first, AnimType.SLIDE.getAnimPair().second)
+                .replace(R.id.frame, ListFragment().newInstance(), ListFragment.TAG)
+                .commit()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -50,12 +61,26 @@ class MainActivity: AppCompatActivity(), MainContract.View {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when(item!!.itemId) {
             R.id.nav_item_info -> {
-                showAboutFragment()
+                presenter.onDrawerOptionAboutClick()
                 return true
+            }
+            else -> {
+
             }
         }
 
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onBackPressed() {
+        val fragmentManager = supportFragmentManager
+        val fragment = fragmentManager.findFragmentByTag(AboutFragment.TAG)
+
+        if (fragment == null) {
+            super.onBackPressed()
+        } else {
+            supportFragmentManager.popBackStack()
+        }
     }
 
     private fun injectDependency() {
@@ -64,14 +89,6 @@ class MainActivity: AppCompatActivity(), MainContract.View {
                 .build()
 
         activityComponent.inject(this)
-    }
-
-    private fun addFragmentToActivity(fragment: Fragment, tag: String, animType: AnimType) {
-        supportFragmentManager.beginTransaction()
-                .disallowAddToBackStack()
-                .setCustomAnimations(animType.getAnimPair().first, animType.getAnimPair().second)
-                .replace(R.id.frame, fragment, tag)
-                .commit()
     }
 
     private fun test() {
