@@ -71,4 +71,8 @@ class AboutFragment: Fragment(), AboutContract.View {
     private fun initView() {
         presenter.loadMessage()
     }
+
+    companion object {
+        val TAG: String = "AboutFragment"
+    }
 }

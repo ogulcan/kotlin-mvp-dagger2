@@ -104,4 +104,8 @@ class ListFragment: Fragment(), ListContract.View, ListAdapter.onItemClickListen
     private fun initView() {
         presenter.loadData()
     }
+
+    companion object {
+        val TAG: String = "ListFragment"
+    }
 }
