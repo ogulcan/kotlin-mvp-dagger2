@@ -7,7 +7,7 @@ android {
     compileSdkVersion 26
     buildToolsVersion "26.0.1"
     defaultConfig {
-        applicationId "com.jibble.test"
+        applicationId "com.ogulcan.android.mvp"
         minSdkVersion 17
         targetSdkVersion 26
         versionCode 1
