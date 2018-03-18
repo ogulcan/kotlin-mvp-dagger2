@@ -1,6 +1,6 @@
 package com.ogulcan.android.mvp.app.ui.list
 
-import com.ogulcan.android.mvp.app.base.BaseContract
+import com.ogulcan.android.mvp.app.ui.base.BaseContract
 import com.ogulcan.android.mvp.app.models.DetailsViewModel
 import com.ogulcan.android.mvp.app.models.Post
 

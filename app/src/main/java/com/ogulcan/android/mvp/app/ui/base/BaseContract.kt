@@ -1,4 +1,4 @@
-package com.ogulcan.android.mvp.app.base
+package com.ogulcan.android.mvp.app.ui.base
 
 /**
  * Created by ogulcan on 07/02/2018.

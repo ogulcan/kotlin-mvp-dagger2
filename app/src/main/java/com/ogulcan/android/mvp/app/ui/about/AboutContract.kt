@@ -1,6 +1,6 @@
 package com.ogulcan.android.mvp.app.ui.about
 
-import com.ogulcan.android.mvp.app.base.BaseContract
+import com.ogulcan.android.mvp.app.ui.base.BaseContract
 
 /**
  * Created by ogulcan on 07/02/2018.
