@@ -1,4 +1,10 @@
 # Sample App: Kotlin-MVP-Dagger2
+
+<h1 align="center">
+	<br>
+	<a href="https://medium.com/@ogulcan/kotlin-mvp-dagger-2-retrofit-sample-android-application-e6fe3af7acd" target="_blank"><img src="https://cdn-images-1.medium.com/max/2000/1*Ia4dK-kcaSfztzHIhtMmaQ.png" alt="Kotlin + MVP + Dagger + Retrofit + RxJava2" width="800"></a>
+</h1>
+
 Kotlin’s popularity is growing day by day. Many  libraries, documents and other resources have already published with Kotlin. We may check the list with a simple search of ’awesome Kotlin’.
 
 This is an example application that I wanted to use Kotlin with Dagger2, Rx and Retrofit. You may heard typicode, was used a json server. 
