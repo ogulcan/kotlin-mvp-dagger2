@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Jibble.iml" filepath="$PROJECT_DIR$/Jibble.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Kotlin-mvp-dagger2-Assignment.iml" filepath="$PROJECT_DIR$/Kotlin-mvp-dagger2-Assignment.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/kotlin-mvp-dagger2.iml" filepath="$PROJECT_DIR$/kotlin-mvp-dagger2.iml" />
     </modules>
